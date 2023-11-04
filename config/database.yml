@@ -1,0 +1,22 @@
+# PostgreSQL. Versions 9.3 and up are supported.
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: postgres
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: turbo_autocomplete_search_development
+
+test:
+  <<: *default
+  database: turbo_autocomplete_search_test
+
+production:
+  <<: *default
+  database: turbo_autocomplete_search_production
+  username: turbo_autocomplete_search
+  password: <%= ENV["TURBO_AUTOCOMPLETE_SEARCH_DATABASE_PASSWORD"] %>
